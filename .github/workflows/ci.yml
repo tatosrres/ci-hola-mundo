@@ -1,0 +1,21 @@
+name: CI - Hola Mundo
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el código
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.x'
+
+      - name: Instalar dependencias
+        run: pip install pytest
+
+      - name: Ejecutar pruebas
+        run: pytest test_app.py
